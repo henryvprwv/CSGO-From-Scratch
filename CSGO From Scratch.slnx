@@ -3,5 +3,5 @@
     <Platform Name="x64" />
     <Platform Name="x86" />
   </Configurations>
-  <Project Path="CSGO From Scratch/CSGO From Scratch.vcxproj" />
+  <Project Path="CSGO From Scratch/CSGO From Scratch.vcxproj" Id="0d3302cd-5f8f-4fb3-b3e2-bea5c1f71218" />
 </Solution>

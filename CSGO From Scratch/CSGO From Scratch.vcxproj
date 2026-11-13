@@ -97,11 +97,11 @@
       <PreprocessorDefinitions>WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>C:\Users\Henry\source\repos\CSGO Stuff\CSGO From Scratch\CSGO From Scratch\Source\Cheat;C:\Users\Henry\source\repos\CSGO Stuff\CSGO From Scratch\CSGO From Scratch\External;$(ProjectDir)External\MinHook\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\Henry\source\repos\CSGO Stuff\CSGO From Scratch\CSGO From Scratch\External\MinHook\Library\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <Manifest>
       <EnableSegmentHeap>true</EnableSegmentHeap>
@@ -116,11 +116,11 @@
       <PreprocessorDefinitions>WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>C:\Users\Henry\source\repos\CSGO Stuff\CSGO From Scratch\CSGO From Scratch\Source\Cheat;C:\Users\Henry\source\repos\CSGO Stuff\CSGO From Scratch\CSGO From Scratch\External;$(ProjectDir)External\MinHook\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\Henry\source\repos\CSGO Stuff\CSGO From Scratch\CSGO From Scratch\External\MinHook\Library\x86;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <Manifest>
       <EnableSegmentHeap>true</EnableSegmentHeap>
@@ -133,11 +133,11 @@
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>C:\Users\Henry\source\repos\CSGO Stuff\CSGO From Scratch\CSGO From Scratch\Source\Cheat;C:\Users\Henry\source\repos\CSGO Stuff\CSGO From Scratch\CSGO From Scratch\External;$(ProjectDir)External\MinHook\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\Henry\source\repos\CSGO Stuff\CSGO From Scratch\CSGO From Scratch\External\MinHook\Library\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <Manifest>
       <EnableSegmentHeap>true</EnableSegmentHeap>
@@ -152,11 +152,11 @@
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp20</LanguageStandard>
+      <AdditionalIncludeDirectories>C:\Users\Henry\source\repos\CSGO Stuff\CSGO From Scratch\CSGO From Scratch\Source\Cheat;C:\Users\Henry\source\repos\CSGO Stuff\CSGO From Scratch\CSGO From Scratch\External;$(ProjectDir)External\MinHook\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalLibraryDirectories>C:\Users\Henry\source\repos\CSGO Stuff\CSGO From Scratch\CSGO From Scratch\External\MinHook\Library\x64;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
     </Link>
     <Manifest>
       <EnableSegmentHeap>true</EnableSegmentHeap>
@@ -164,9 +164,46 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="DllMain.cpp" />
+    <ClCompile Include="External\MinHook\src\buffer.c" />
+    <ClCompile Include="External\MinHook\src\hde\hde32.c" />
+    <ClCompile Include="External\MinHook\src\hde\hde64.c" />
+    <ClCompile Include="External\MinHook\src\hook.c" />
+    <ClCompile Include="External\MinHook\src\trampoline.c" />
+    <ClCompile Include="Source\Cheat\Core\Cheat Manager\Cheat Manager.cpp" />
+    <ClCompile Include="Source\Cheat\Core\Hooks\HookManager.cpp" />
+    <ClCompile Include="Source\Cheat\Core\Hooks\Hooks\CreateMove.cpp" />
+    <ClCompile Include="Source\Cheat\Core\Interfaces\Interfaces.cpp" />
+    <ClCompile Include="Source\Cheat\Core\NetVars\NetVars.cpp" />
+    <ClCompile Include="Source\Cheat\Features\Movement\Movement.cpp" />
+    <ClCompile Include="Source\Cheat\Utility\Memory\Memory.cpp" />
+    <ClCompile Include="Source\Cheat\Volvo\Classes\CEntity.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="External\MinHook\Include\MinHook.h" />
+    <ClInclude Include="External\MinHook\src\buffer.h" />
+    <ClInclude Include="External\MinHook\src\hde\hde32.h" />
+    <ClInclude Include="External\MinHook\src\hde\hde64.h" />
+    <ClInclude Include="External\MinHook\src\hde\pstdint.h" />
+    <ClInclude Include="External\MinHook\src\hde\table32.h" />
+    <ClInclude Include="External\MinHook\src\hde\table64.h" />
+    <ClInclude Include="External\MinHook\src\trampoline.h" />
+    <ClInclude Include="Source\Cheat\Core\Cheat Manager\Cheat Manager.h" />
+    <ClInclude Include="Source\Cheat\Core\Hooks\HookManager.h" />
+    <ClInclude Include="Source\Cheat\Core\Hooks\Hooks\CreateMove.h" />
+    <ClInclude Include="Source\Cheat\Core\Interfaces\Interfaces.h" />
+    <ClInclude Include="Source\Cheat\Core\NetVars\NetVars.h" />
+    <ClInclude Include="Source\Cheat\Features\Movement\Movement.h" />
+    <ClInclude Include="Source\Cheat\Utility\Memory\FNV.h" />
+    <ClInclude Include="Source\Cheat\Utility\Memory\Memory.h" />
+    <ClInclude Include="Source\Cheat\Volvo\Classes\CClientClass.h" />
+    <ClInclude Include="Source\Cheat\Volvo\Classes\CRecvTable.h" />
+    <ClInclude Include="Source\Cheat\Volvo\Classes\CUserCmd.h" />
+    <ClInclude Include="Source\Cheat\Volvo\Classes\Vector.h" />
+    <ClInclude Include="Source\Cheat\Volvo\Classes\CEntity.h" />
+    <ClInclude Include="Source\Cheat\Volvo\Interfaces\ClientModeShared.h" />
+    <ClInclude Include="Source\Cheat\Volvo\Interfaces\IClientEntityList.h" />
+    <ClInclude Include="Source\Cheat\Volvo\Interfaces\IBaseClientDLL.h" />
+    <ClInclude Include="Source\Cheat\Volvo\Interfaces\IVEngineClient.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

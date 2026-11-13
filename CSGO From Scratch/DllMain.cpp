@@ -1,9 +1,19 @@
 #include <Windows.h>
+#include <iostream>
+
+#include <Core/Cheat Manager/Cheat Manager.h>
 
 DWORD WINAPI StartupThread(HINSTANCE hinstDLL)
 {
-    while (!(GetAsyncKeyState(VK_END)))
+    if (!GetCheatManager()->OnInit())
+        std::cout << "Init Failed!\n";
+    else
+        std::cout << "Init Success!\n";
+
+    while (!(GetAsyncKeyState(VK_END) & 0x8000))
         Sleep(200);
+
+    GetCheatManager()->OnShutdown();
 
     FreeLibraryAndExitThread(hinstDLL, 0);
 }

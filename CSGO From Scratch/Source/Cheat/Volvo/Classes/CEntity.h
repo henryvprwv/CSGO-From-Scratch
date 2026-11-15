@@ -3,6 +3,7 @@
 
 #include <Core/NetVars/NetVars.h>
 #include <Utility/Memory/Memory.h>
+#include <Volvo/Classes/Vector.h>
 
 class CEntity
 {
@@ -11,10 +12,17 @@ public:
 	NETVAR(GetMoveType, "C_BaseEntity->m_MoveType", int);
 	NETVAR(GetFlags, "CBasePlayer->m_fFlags", int);
 
-	constexpr std::int32_t GetHealth() noexcept
+
+	const Vector& GetAbsOrigin() noexcept
+	{
+		return GetMemory()->Call<const Vector&>(this, 10);
+	}
+
+	std::int32_t GetHealth() noexcept
 	{
 		return GetMemory()->Call<std::int32_t>(this, 122);
 	}
+
 
 	static CEntity* GetLocalPlayer() noexcept;
 };

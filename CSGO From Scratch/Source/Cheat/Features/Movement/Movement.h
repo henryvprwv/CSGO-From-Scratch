@@ -12,6 +12,7 @@ public:
 private:
 	void BunnyHop(CUserCmd* Cmd);
 	void FastLadder(CUserCmd* Cmd);
+	void EdgeJump(CUserCmd* Cmd);
 };
 
 Movement* GetMovement();

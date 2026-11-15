@@ -4,6 +4,7 @@
 #include <Volvo/Interfaces/IBaseClientDLL.h>
 #include <Volvo/Interfaces/ClientModeShared.h>
 #include <Volvo/Interfaces/IVEngineClient.h>
+#include <Volvo/Interfaces/IEngineTrace.h>
 
 class Interfaces
 {
@@ -14,6 +15,7 @@ public:
 	IBaseClientDLL* Client = nullptr;
 	ClientModeShared* ClientModeS = nullptr;
 	IVEngineClient* Engine = nullptr;
+	IEngineTrace* Trace = nullptr;
 };
 
 Interfaces* GetInterfaces();

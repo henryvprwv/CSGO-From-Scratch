@@ -55,5 +55,8 @@ bool Interfaces::Setup()
 	Engine = GetInterface<IVEngineClient>("VEngineClient014", "engine.dll");
 	if (!Engine) return false;
 
+	Trace = GetInterface<IEngineTrace>("EngineTraceClient004", "engine.dll");
+	if (!Trace) return false;
+
 	return true;
 }

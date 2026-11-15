@@ -177,6 +177,7 @@
     <ClCompile Include="Source\Cheat\Features\Movement\Movement.cpp" />
     <ClCompile Include="Source\Cheat\Utility\Memory\Memory.cpp" />
     <ClCompile Include="Source\Cheat\Volvo\Classes\CEntity.cpp" />
+    <ClCompile Include="Source\Cheat\Volvo\Interfaces\IEngineTrace.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="External\MinHook\Include\MinHook.h" />
@@ -198,11 +199,14 @@
     <ClInclude Include="Source\Cheat\Volvo\Classes\CClientClass.h" />
     <ClInclude Include="Source\Cheat\Volvo\Classes\CRecvTable.h" />
     <ClInclude Include="Source\Cheat\Volvo\Classes\CUserCmd.h" />
+    <ClInclude Include="Source\Cheat\Volvo\Classes\Matrix3x4.h" />
+    <ClInclude Include="Source\Cheat\Volvo\Classes\bspflags.h" />
     <ClInclude Include="Source\Cheat\Volvo\Classes\Vector.h" />
     <ClInclude Include="Source\Cheat\Volvo\Classes\CEntity.h" />
     <ClInclude Include="Source\Cheat\Volvo\Interfaces\ClientModeShared.h" />
     <ClInclude Include="Source\Cheat\Volvo\Interfaces\IClientEntityList.h" />
     <ClInclude Include="Source\Cheat\Volvo\Interfaces\IBaseClientDLL.h" />
+    <ClInclude Include="Source\Cheat\Volvo\Interfaces\IEngineTrace.h" />
     <ClInclude Include="Source\Cheat\Volvo\Interfaces\IVEngineClient.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

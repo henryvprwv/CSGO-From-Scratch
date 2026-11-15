@@ -8,10 +8,19 @@
 class CEntity
 {
 public:
-	//NETVAR(GetHealth, "CBasePlayer->m_iHealth", int);
 	NETVAR(GetMoveType, "C_BaseEntity->m_MoveType", int);
 	NETVAR(GetFlags, "CBasePlayer->m_fFlags", int);
+	NETVAR(Immune, "CCSPlayer->m_bGunGameImmunity", bool);
 
+	bool IsAlive()
+	{
+		return GetHealth() > 0;
+	}
+
+	constexpr std::int32_t GetIndex() noexcept
+	{
+		return GetMemory()->Call<std::int32_t>(this + 0x8, 10);
+	}
 
 	const Vector& GetAbsOrigin() noexcept
 	{
@@ -23,11 +32,17 @@ public:
 		return GetMemory()->Call<std::int32_t>(this, 122);
 	}
 
+	Vector GetEyePosition() noexcept
+	{
+		Vector EyePosition;
+		GetMemory()->Call<void>(this, 285, &EyePosition);
+		return EyePosition;
+	}
 
 	static CEntity* GetLocalPlayer() noexcept;
 };
 
-//https://github.com/ValveSoftware/source-sdk-2013/blob/e1f1fd42271805072f052051c26c21caa2c87b04/src/public/const.h#L192-L211
+// https://github.com/ValveSoftware/source-sdk-2013/blob/e1f1fd42271805072f052051c26c21caa2c87b04/src/public/const.h#L192-L211
 enum MoveType_t
 {
 	MOVETYPE_NONE = 0,			// never moves
@@ -108,4 +123,46 @@ enum CSWeaponType
 	WEAPONTYPE_MELEE,
 
 	WEAPONTYPE_UNKNOWN
+};
+
+// https://github.com/RileyKun/cstrike15_src-2019/blob/a4c7aaea259319aca272839f688a3f4d9fe1cb2c/public/cdll_int.h#L134-L159
+
+typedef struct PlayerInfoS
+{
+	// version for future compatibility
+	std::uint64_t	version;
+	// network xuid
+	std::uint64_t	XUID;
+	// scoreboard information
+	char			Name[128];
+	// local server user ID, unique while server is running
+	int				UserID;
+	// global unique player identifer
+	char			Guid[33];
+	// friends identification number
+	std::uint32_t	FriendsID;
+	// friends name
+	char			FriendsName[128];
+	// true, if player is a bot controlled by game.dll
+	bool			FakePlayer;
+	// true if player is the HLTV proxy
+	bool			IsHLTV;
+	// custom files CRC for this player
+	std::uint32_t	CustomFiles[4];
+	// this counter increases each time the server downloaded a new file
+	unsigned char	FilesDownloaded;
+} PlayerInfo;
+
+enum HitGroup
+{
+	HITGROUP_GENERIC,
+	HITGROUP_HEAD,
+	HITGROUP_CHEST,
+	HITGROUP_STOMACH,
+	HITGROUP_LEFTARM,
+	HITGROUP_RIGHTARM,
+	HITGROUP_LEFTLEG,
+	HITGROUP_RIGHTLEG,
+	HITGROUP_NECK,
+	HITGROUP_GEAR = 10
 };

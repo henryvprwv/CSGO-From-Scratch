@@ -17,6 +17,7 @@ void Movement::OnCreateMove(CUserCmd* Cmd)
 	this->EdgeJump(Cmd);
 	this->BunnyHop(Cmd);
 	this->FastLadder(Cmd);
+	this->LadderBounce(Cmd);
 }
 
 void Movement::BunnyHop(CUserCmd* Cmd)
@@ -91,11 +92,18 @@ void Movement::EdgeJump(CUserCmd* Cmd)
 		constexpr unsigned int Mask = CONTENTS_SOLID | CONTENTS_MOVEABLE | CONTENTS_PLAYERCLIP | CONTENTS_GRATE;
 
 		GetInterfaces()->Trace->TraceRay(TraceRay, Mask, &Filter, &Trace);
-		//std::cout << Trace.DidHit() << "\n";
 		if (!Trace.DidHit())
 			PointsInAir++;
 	}
 
 	if (PointsInAir == 4)
+		Cmd->Buttons |= IN_JUMP;
+}
+
+void Movement::LadderBounce(CUserCmd* Cmd)
+{
+	auto pLocal = CEntity::GetLocalPlayer();
+
+	if ((pLocal->GetFlags() & FL_ONGROUND) && (pLocal->GetMoveType() == MOVETYPE_LADDER))
 		Cmd->Buttons |= IN_JUMP;
 }

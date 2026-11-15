@@ -10,6 +10,7 @@
 #include <Volvo/Classes/CEntity.h>
 
 #include <Features/Movement/Movement.h>
+#include <Features/Aim/Aim.h>
 
 CheatManager* GetCheatManager()
 {
@@ -49,8 +50,9 @@ void CheatManager::OnCreateMove(CUserCmd* Cmd)
 {
 	auto pLocal = CEntity::GetLocalPlayer();
 
-	if (pLocal->GetHealth() >= 1)
+	if (pLocal->IsAlive())
 	{
 		GetMovement()->OnCreateMove(Cmd);
+		GetAim()->OnCreateMove(Cmd);
 	}
 }

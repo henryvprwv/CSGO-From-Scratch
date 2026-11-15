@@ -20,15 +20,6 @@ int CGameTrace::GetEntityIndex() const
 {
 	if (!Ent) return -1;
 
-	auto EntityList = GetInterfaces()->EntityList;
-	if (!EntityList) return -1;
-
-	const int HighestIndex = EntityList->GetHighestEntityIndex();
-	for (int i = 0; i <= HighestIndex; ++i)
-	{
-		if (EntityList->GetClientEntity(i) == Ent)
-			return i;
-	}
-
-	return -1;
+	return Ent->GetIndex();
 }
+

@@ -1,10 +1,35 @@
 #pragma once
 
-#define CHECK_VALID( _v)	0
+#include <cmath>
 
 struct Vector
 {
 	float X, Y, Z;
+
+    Vector operator + (const Vector& Other) const
+    {
+        return { X + Other.X, Y + Other.Y, Z + Other.Z };
+    }
+
+    Vector operator - (const Vector& Other) const
+    {
+        return { X - Other.X, Y - Other.Y, Z - Other.Z };
+    }
+
+    Vector operator * (const Vector& Other) const
+    {
+        return { X * Other.X, Y * Other.Y, Z * Other.Z };
+    }
+
+    Vector operator * (float Scale) const
+    {
+        return { X * Scale, Y * Scale, Z * Scale };
+    }
+
+    Vector operator / (const Vector& Other) const
+    {
+        return { X / Other.X, Y / Other.Y, Z / Other.Z };
+    }
 
     void Clamp()
     {
@@ -17,8 +42,6 @@ struct Vector
 
     static void Subtract(const Vector& a, const Vector& b, Vector& c)
     {
-        CHECK_VALID(a);
-        CHECK_VALID(b);
         c.X = a.X - b.X;
         c.Y = a.Y - b.Y;
         c.Z = a.Z - b.Z;
@@ -31,7 +54,6 @@ struct Vector
 
     static void Copy(const Vector& src, Vector& dst)
     {
-        CHECK_VALID(src);
         dst.X = src.X;
         dst.Y = src.Y;
         dst.Z = src.Z;
@@ -39,8 +61,20 @@ struct Vector
 
     float LengthSqr() const
     {
-        CHECK_VALID(*this);
         return (X * X + Y * Y + Z * Z);
+    }
+
+    static void AngleVectors(const Vector& Angles, Vector* Forward, Vector* Right = nullptr, Vector* Up = nullptr)
+    {
+        static constexpr float kDeg2Rad = 3.14159265358979323846f / 180.f;
+
+        float sp = std::sin(Angles.X * kDeg2Rad), cp = std::cos(Angles.X * kDeg2Rad);
+        float sy = std::sin(Angles.Y * kDeg2Rad), cy = std::cos(Angles.Y * kDeg2Rad);
+        float sr = std::sin(Angles.Z * kDeg2Rad), cr = std::cos(Angles.Z * kDeg2Rad);
+
+        if (Forward) *Forward = { cp * cy, cp * sy, -sp };
+        if (Right) *Right = { -sr * sp * cy + cr * sy, -sr * sp * sy - cr * cy, -sr * cp };
+        if (Up) *Up = { cr * sp * cy + sr * sy, cr * sp * sy - sr * cy, cr * cp };
     }
 };
 

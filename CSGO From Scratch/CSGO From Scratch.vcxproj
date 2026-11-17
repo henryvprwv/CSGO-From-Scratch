@@ -172,10 +172,12 @@
     <ClCompile Include="Source\Cheat\Core\Cheat Manager\Cheat Manager.cpp" />
     <ClCompile Include="Source\Cheat\Core\Hooks\HookManager.cpp" />
     <ClCompile Include="Source\Cheat\Core\Hooks\Hooks\CreateMove.cpp" />
+    <ClCompile Include="Source\Cheat\Core\Hooks\Hooks\PaintTraverse.cpp" />
     <ClCompile Include="Source\Cheat\Core\Interfaces\Interfaces.cpp" />
     <ClCompile Include="Source\Cheat\Core\NetVars\NetVars.cpp" />
     <ClCompile Include="Source\Cheat\Features\Aim\Aim.cpp" />
     <ClCompile Include="Source\Cheat\Features\Movement\Movement.cpp" />
+    <ClCompile Include="Source\Cheat\Features\Visuals\Visuals.cpp" />
     <ClCompile Include="Source\Cheat\Utility\Memory\Memory.cpp" />
     <ClCompile Include="Source\Cheat\Volvo\Classes\CEntity.cpp" />
     <ClCompile Include="Source\Cheat\Volvo\Interfaces\IEngineTrace.cpp" />
@@ -192,10 +194,12 @@
     <ClInclude Include="Source\Cheat\Core\Cheat Manager\Cheat Manager.h" />
     <ClInclude Include="Source\Cheat\Core\Hooks\HookManager.h" />
     <ClInclude Include="Source\Cheat\Core\Hooks\Hooks\CreateMove.h" />
+    <ClInclude Include="Source\Cheat\Core\Hooks\Hooks\PaintTraverse.h" />
     <ClInclude Include="Source\Cheat\Core\Interfaces\Interfaces.h" />
     <ClInclude Include="Source\Cheat\Core\NetVars\NetVars.h" />
     <ClInclude Include="Source\Cheat\Features\Aim\Aim.h" />
     <ClInclude Include="Source\Cheat\Features\Movement\Movement.h" />
+    <ClInclude Include="Source\Cheat\Features\Visuals\Visuals.h" />
     <ClInclude Include="Source\Cheat\Utility\Memory\FNV.h" />
     <ClInclude Include="Source\Cheat\Utility\Memory\Memory.h" />
     <ClInclude Include="Source\Cheat\Volvo\Classes\CClientClass.h" />
@@ -209,6 +213,10 @@
     <ClInclude Include="Source\Cheat\Volvo\Interfaces\IClientEntityList.h" />
     <ClInclude Include="Source\Cheat\Volvo\Interfaces\IBaseClientDLL.h" />
     <ClInclude Include="Source\Cheat\Volvo\Interfaces\IEngineTrace.h" />
+    <ClInclude Include="Source\Cheat\Volvo\Interfaces\IEngineVGui.h" />
+    <ClInclude Include="Source\Cheat\Volvo\Interfaces\IPanel.h" />
+    <ClInclude Include="Source\Cheat\Volvo\Interfaces\ISurface.h" />
+    <ClInclude Include="Source\Cheat\Volvo\Interfaces\IVDebugOverlay.h" />
     <ClInclude Include="Source\Cheat\Volvo\Interfaces\IVEngineClient.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

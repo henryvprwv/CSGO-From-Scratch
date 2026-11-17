@@ -1,7 +1,6 @@
 #pragma once
 
 #include <MinHook/Include/MinHook.h>
-#include <initializer_list>
 #include <vector>
 
 struct HookData

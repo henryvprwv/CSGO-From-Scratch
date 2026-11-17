@@ -22,8 +22,23 @@ void Aim::TriggerBot(CUserCmd* Cmd)
 
 	auto EyePos = pLocal->GetEyePosition();
 
+	switch (pLocal->GetActiveWeapon()->GetWeaponType())
+	{
+		case WEAPONTYPE_PISTOL:
+		case WEAPONTYPE_SUBMACHINEGUN:
+		case WEAPONTYPE_RIFLE:
+		case WEAPONTYPE_SHOTGUN:
+		case WEAPONTYPE_SNIPER_RIFLE:
+		case WEAPONTYPE_MACHINEGUN:
+			break;
+		default:
+			return;
+	}
+
+	if (pLocal->GetSpeed() > 15.f || !pLocal->GetActiveWeapon()->GetClip()) return;
+
 	Vector Forward;
-	Vector::AngleVectors(Cmd->ViewAngles, &Forward, nullptr, nullptr);
+	Vector::AngleVectors(Cmd->ViewAngles + pLocal->GetAimPunch(), &Forward, nullptr, nullptr);
 	Vector End = EyePos + Forward * 5000.f;
 
 	Ray TraceRay;

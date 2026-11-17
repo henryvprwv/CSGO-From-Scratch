@@ -4,6 +4,7 @@
 #include <Utility/Memory/Memory.h>
 
 #include "Hooks/CreateMove.h"
+#include "Hooks/PaintTraverse.h"
 #include <iostream>
 
 HookManager* GetHookManager()
@@ -16,6 +17,7 @@ bool HookManager::OnInit()
 {
     Hooks = {
         {"CreateMove", GetMemory()->Get(GetInterfaces()->ClientModeS, 24), reinterpret_cast<void*>(&CreateMoveHook), reinterpret_cast<void**>(&CreateMoveOriginal)},
+        {"PaintTraverse", GetMemory()->Get(GetInterfaces()->Panel, 41), reinterpret_cast<void*>(&PaintTraverseHook), reinterpret_cast<void**>(&PaintTraverseOriginal)}
     };
 
     for (auto& Hook : Hooks)
@@ -27,6 +29,8 @@ bool HookManager::OnInit()
 
         Result = MH_EnableHook(Hook.Target);
         if (Result != MH_OK) return false;
+
+        std::cout << "[Hooks] " << Hook.Name << " Success!\n";
     }
     return true;
 }

@@ -57,9 +57,6 @@ void Movement::FastLadder(CUserCmd* Cmd)
 			Cmd->Buttons |= IN_MOVELEFT;
 	}
 
-	if (!IsOnLadder && WasOnLadder)
-		Cmd->ViewAngles = PreLadderAngles;
-
 	WasOnLadder = IsOnLadder;
 }
 
@@ -78,7 +75,7 @@ void Movement::EdgeJump(CUserCmd* Cmd)
 		{ LocalPos.X - Offset, LocalPos.Y - Offset, LocalPos.Z - 30.f }, // back left
 		{ LocalPos.X + Offset, LocalPos.Y - Offset, LocalPos.Z - 30.f }, // front left
 		{ LocalPos.X - Offset, LocalPos.Y + Offset, LocalPos.Z - 30.f }, // back right
-		{ LocalPos.X + Offset, LocalPos.Y + Offset, LocalPos.Z - 30.f }, // back left
+		{ LocalPos.X + Offset, LocalPos.Y + Offset, LocalPos.Z - 30.f }, // front left
 	};
 
 	int PointsInAir = 0;

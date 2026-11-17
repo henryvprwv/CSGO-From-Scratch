@@ -8,9 +8,14 @@
 class IVEngineClient
 {
 public:
-	constexpr void GetScreenSize(int& H, int& W) noexcept
+	constexpr void GetScreenSize(int& Width, int& Height) noexcept
 	{
-		return GetMemory()->Call<void>(this, 5, H, W);
+		GetMemory()->Call<void>(this, 5, &Width, &Height);
+	}
+
+	bool GetPlayerInfo(int EntNum, PlayerInfo* pInfo)
+	{
+		return GetMemory()->Call<bool>(this, 8, EntNum, pInfo);
 	}
 
 	constexpr std::int32_t GetLocalPlayer() noexcept
@@ -18,8 +23,20 @@ public:
 		return GetMemory()->Call<std::int32_t>(this, 12);
 	}
 
-	bool GetPlayerInfo(int EntNum, PlayerInfo* pInfo)
+	Vector GetViewAngles() noexcept
 	{
-		return GetMemory()->Call<bool>(this, 8, EntNum, pInfo);
+		Vector ViewAngles;
+		GetMemory()->Call<void>(this, 18, &ViewAngles);
+		return ViewAngles;
+	}
+
+	void SetViewAngles(Vector &ViewAngles) noexcept
+	{
+		GetMemory()->Call<void, Vector&>(this, 19, ViewAngles);
+	}
+
+	bool IsInGame() noexcept
+	{
+		return GetMemory()->Call<bool>(this, 26);
 	}
 };

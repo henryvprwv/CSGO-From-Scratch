@@ -5,6 +5,10 @@
 #include <Volvo/Interfaces/ClientModeShared.h>
 #include <Volvo/Interfaces/IVEngineClient.h>
 #include <Volvo/Interfaces/IEngineTrace.h>
+#include <Volvo/Interfaces/ISurface.h>
+#include <Volvo/Interfaces/IVDebugOverlay.h>
+#include <Volvo/Interfaces/IPanel.h>
+#include <Volvo/Interfaces/IEngineVGui.h>
 
 class Interfaces
 {
@@ -16,6 +20,10 @@ public:
 	ClientModeShared* ClientModeS = nullptr;
 	IVEngineClient* Engine = nullptr;
 	IEngineTrace* Trace = nullptr;
+	ISurface* Surface = nullptr;
+	IVDebugOverlay* DebugOverlay = nullptr;
+	IPanel* Panel = nullptr;
+	IEngineVGui* EngineVGUI = nullptr;
 };
 
 Interfaces* GetInterfaces();

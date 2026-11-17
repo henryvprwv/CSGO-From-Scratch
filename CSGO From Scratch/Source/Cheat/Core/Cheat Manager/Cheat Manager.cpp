@@ -11,6 +11,7 @@
 
 #include <Features/Movement/Movement.h>
 #include <Features/Aim/Aim.h>
+#include <Features/Visuals/Visuals.h>
 
 CheatManager* GetCheatManager()
 {
@@ -54,5 +55,13 @@ void CheatManager::OnCreateMove(CUserCmd* Cmd)
 	{
 		GetMovement()->OnCreateMove(Cmd);
 		GetAim()->OnCreateMove(Cmd);
+	}
+}
+
+void CheatManager::OnPaintTraverse(int VGUIPannel)
+{
+	if (VGUIPannel == GetInterfaces()->EngineVGUI->GetPanel(PANEL_TOOLS))
+	{
+		GetVisuals()->OnPaintTraverse();
 	}
 }

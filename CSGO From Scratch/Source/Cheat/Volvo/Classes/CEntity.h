@@ -11,6 +11,10 @@ public:
 	NETVAR(GetMoveType, "C_BaseEntity->m_MoveType", int);
 	NETVAR(GetFlags, "CBasePlayer->m_fFlags", int);
 	NETVAR(Immune, "CCSPlayer->m_bGunGameImmunity", bool);
+	NETVAR(GetVelocity, "CCSPlayer->m_vecVelocity[0]", Vector);
+
+	// weapon stuff:
+	NETVAR(GetClip, "CBaseCombatWeapon->m_iClip1", int)
 
 	bool IsAlive()
 	{
@@ -38,6 +42,30 @@ public:
 		GetMemory()->Call<void>(this, 285, &EyePosition);
 		return EyePosition;
 	}
+
+	 Vector GetAimPunch() noexcept
+	 {
+	 	Vector AimPunch;
+	 	GetMemory()->Call<void>(this, 346, &AimPunch);
+	 	return AimPunch;
+	 }
+
+	 float GetSpeed()
+	 {
+		 return sqrt(GetVelocity().LengthSqr());
+	 }
+
+	 // weapon stuff:
+
+	 CEntity* GetActiveWeapon() noexcept
+	 {
+		 return GetMemory()->Call<CEntity*>(this, 268);
+	 }
+
+     int GetWeaponType() noexcept
+	 {
+		 return GetMemory()->Call<int>(this, 455);
+	 }
 
 	static CEntity* GetLocalPlayer() noexcept;
 };

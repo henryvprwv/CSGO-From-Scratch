@@ -1,6 +1,7 @@
 #include "Interfaces.h"
 
 #include <Windows.h>
+#include <iostream>
 
 Interfaces* GetInterfaces()
 {
@@ -24,7 +25,14 @@ T* GetInterface(const char* InterfaceName, const char* ModuleName)
 	using CreateInterfaceFn = T* (*)(const char*, int*);
 	const auto CreateInterface = reinterpret_cast<CreateInterfaceFn>(FunctionAddress);
 
-	return CreateInterface(InterfaceName, nullptr);
+	auto Result = CreateInterface(InterfaceName, nullptr);
+
+	if (Result)
+		std::cout << "[Interfaces] " << InterfaceName << " Success @ " << std::hex << Result << "\n";
+	else 
+		std::cout << "[Interfaces] " << InterfaceName << " Failed\n";
+
+	return Result;
 }
 
 bool Interfaces::Setup()
@@ -51,12 +59,25 @@ bool Interfaces::Setup()
 	//																^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 	//															    10th index in the CHLClient interface + 5 bytes into that fn is our ClientModeShared ptr
 	ClientModeS = **reinterpret_cast<ClientModeShared***>((*reinterpret_cast<unsigned int**>(Client))[10] + 5);
+	if (!ClientModeS) return false;
 
 	Engine = GetInterface<IVEngineClient>("VEngineClient014", "engine.dll");
 	if (!Engine) return false;
 
 	Trace = GetInterface<IEngineTrace>("EngineTraceClient004", "engine.dll");
 	if (!Trace) return false;
+
+	Surface = GetInterface<ISurface>("VGUI_Surface031", "vguimatsurface.dll");
+	if (!Surface) return false;
+
+	DebugOverlay = GetInterface<IVDebugOverlay>("VDebugOverlay004", "engine.dll");
+	if (!DebugOverlay) return false;
+
+	Panel = GetInterface<IPanel>("VGUI_Panel009", "vgui2.dll");
+	if (!Panel) return false;
+
+	EngineVGUI = GetInterface<IEngineVGui>("VEngineVGui001", "engine.dll");
+	if (!EngineVGUI) return false;
 
 	return true;
 }
